@@ -1,0 +1,55 @@
+//    private class DownloadSkills extends AsyncTask<String, Void, String> {
+//        @Override
+//        protected String doInBackground(String... urls) {
+//            String response = "";
+//            HttpURLConnection urlConnection = null;
+//            for (String url : urls) {
+//                try {
+//                    URL urlObject = new URL(url);
+//                    urlConnection = (HttpURLConnection) urlObject.openConnection();
+//
+//                    InputStream content = urlConnection.getInputStream();
+//
+//                    BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+//                    String s = "";
+//                    while ((s = buffer.readLine()) != null) {
+//                        response += s;
+//                    }
+//
+//                } catch (Exception e) {
+//                    response = "Unable to download the list skills, Reason: "
+//                            + e.getMessage();
+//                }
+//                finally {
+//                    if (urlConnection != null)
+//                        urlConnection.disconnect();
+//                }
+//            }
+//            return response;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String result) {
+//            // Something wrong with the network or the URL.
+//            if (result.startsWith("Unable to")) {
+//                Toast.makeText(getActivity().getApplicationContext(), result, Toast.LENGTH_LONG)
+//                        .show();
+//                return;
+//            }
+//
+//            List<Skill> skillList = new ArrayList<Skill>();
+//            result = Skill.parseSkillJSON(result, skillList);
+//            // Something wrong with the JSON returned.
+//            if (result != null) {
+//                Toast.makeText(getActivity().getApplicationContext(), result, Toast.LENGTH_LONG)
+//                        .show();
+//                return;
+//            }
+//
+//            // Everything is good, show the list of courses.
+//            if (!skillList.isEmpty()) {
+//                mRecyclerView.setAdapter(new MySkillRecyclerViewAdapter(skillList, mListener));
+//            }
+//        }
+//
+//    }
